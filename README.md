@@ -116,34 +116,56 @@ function validate(form_id)
 
 ## Arquivo 'HTML':
 ```
-https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css
+<html>
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <link href="style.css" rel="stylesheet">
 
-<form method="post" id="frm">
-  <div id="mostrar" style="display:none">
-      <div class="alert alert-danger" role="alert">
-          <label id="validate_message"></label>
+<body>
+  <div class="content">
+
+    <div id="mostrar" class="alert alert-danger" role="alert">    
+        <label id="validate_message"></label>
+    </div> 
+
+    <form method="post" id="frm">
+      
+      <div class="form-group">
+        <label for="exampleInputEmail1">Nome</label>
+        <input type="text" name="nome" class="form-control required">
       </div>
-  </div>
-  
-   <input type="text" id="nome" name="nome" class="required">
-   
-   <input type="text" id="altura" name="altura" class="required numeric">
-   
-   <input type="button" value="Gravar" onclick="Gravar()">
-</form>
+      
+      <div class="form-group">
+        <label for="exampleInputEmail1">Altura</label>
+        <input type="text" name="altura" class="form-control required numeric">          
+      </div>      
+      
+      <input type="button" value="Gravar" class="btn btn-primary" onclick="Gravar()">
+    </form>
 
-<script src="validations.js"></script>
-<script>
-  function Gravar() {
-    validate('frm');            
-    if (!validateState) {                
-        var elMostrar = document.getElementById('mostrar');
-        elMostrar.style.display = 'block';
-        return;
-    }    
-    
-    // Submeter formulário
-    alert('Enviado');
-  }
-</script>
+  </div>
+
+
+  <script  src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+  <script  src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+  <script src="validations.js"></script>
+  <script>    
+    var elMostrar = document.getElementById('mostrar');
+    elMostrar.style.display = 'none';
+
+    function Gravar() {
+      validate('frm');            
+      if (!validateState) {                          
+          elMostrar.style.display = 'block';
+          return;
+      }    
+      
+      // Submeter formulário
+      alert('Enviado');
+    }
+  </script>
+
+  
+</body>
+
+</html>
 ```
